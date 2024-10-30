@@ -1,0 +1,23 @@
+@main {
+  one: int = const 1;
+  x: ptr<int> = alloc one;
+
+  forty_two: int = const 42;
+  store x forty_two;
+
+  one_hundred: int = const 100;
+  store x one_hundred;
+  
+  y: int = load x;
+  print y;
+
+  # Post-use dead code
+  eleven: int = const 11;
+  store x eleven;
+
+  twenty_two: int = const 22;
+  store x twenty_two;
+  
+  # Free the allocated memory
+  free x;
+}
